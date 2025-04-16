@@ -1,0 +1,66 @@
+<section class="container fixed-top bg-white pt-2 py-3">
+    <nav class="container d-flex space">
+    <div>
+        <h3 class="text-black">NEWS NIGERIA</h3>
+    </div>
+    <div class="d-flex top-links">
+        <li> <%= link_to "Home", root_path %> </li>
+        <li> <a href=""> ABOUT </a> </li>
+        <li> <%= link_to "Create Post", new_post_path if authenticated? %> </li>
+        <li> <a href="#posts"> POSTS </a> </li>
+        <li> <%= link_to "Login", new_session_path unless authenticated? %>
+ </li>
+        <li> <%= button_to "Log out", session_path, method: :delete if authenticated? %> </li>
+    </div>
+    </nav>
+</section>
+
+<hr>
+
+
+
+<hr>
+
+<div>
+    <div>
+    <h1>NEWS NIGERIA</h1>
+    <p>Welcome, curious minds and fellow explorers! You have stumbled upon the NEWS NIGERIA BLOG, a space where we dive headfirst into the wonderfully vast and interconnected tapestry of life. From the everyday wonders that often go unnoticed to the big, thought-provoking questions that keep us up at night, we are here to explore it all. Consider this your digital corner for discovery, inspiration, and maybe even a little bit of delightful randomness. So grab a virtual seat, get comfortable, and let us embark on this ever-evolving journey of everything together!</p>
+</div>
+
+<h3 class="text-center mt-5">CHECK OUT OUR DAILY NEWS</h3>
+
+
+<section class="images-show" id="posts">
+<div class="container">
+    <div class="row bg-white p-4 text-black">
+     <% @posts.each do |post| %>
+        <div class="col-lg-12 col-md-12">
+        <h2 class="mt-4"> <%= post.title %> </h2>
+        <p> <%= post.body %> </p>
+        <div class="images"> 
+        <% if post.featured_image.present? %>
+            <%= image_tag post.featured_image, alt: post.title, style: "width: 100%; height: 70vh;" %>
+        <% end %>
+        </div>
+    <div class="row">
+    <div class="col-lg-12 buttons">
+        <div class="d-flex mt-5">
+            <button class="mx-2 btn btn-primary text-white"> <%= link_to "Edit", edit_post_path(post) %> </button>
+            <%= button_to "Delete", post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <button class="mx-2 text-white btn btn-primary"> <%= link_to "Comment", new_comment_path %> </button>
+            <button class="mx-2 text-white btn btn-primary"> <%= link_to "View Comments", comments_path %> </button>
+
+        </div>
+        </div>
+        </div>
+        <hr>
+     <% end %> 
+    </div>
+
+
+    </div>
+    </div>
+</section>
+<footer class="bg-white p-3 mt-5">
+    <p class="text-black text-center">&copy; <%= Time.new.year %> NEWS NIGERIA</p>
+</footer>

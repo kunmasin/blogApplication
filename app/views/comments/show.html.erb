@@ -1,0 +1,7 @@
+<h1> <%= @comment.name %> <h1>
+<h1> <%= @comment.email %> <h1>
+<h1> <%= @comment.body %> <h1>
+<button class="text-white btn btn-info"> <%= link_to "Back", posts_path %> </button>
+<button class="text-white btn btn-info"> <%= link_to "Edit", edit_comment_path(@comment) %> </button>
+
+<%= button_to "Delete", @comment, method: :delete, data: { turbo_confirm: "Are you sure?" } %>

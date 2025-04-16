@@ -1,0 +1,13 @@
+<% cache @post do %>
+    <h1><%= @post.title %></h1>
+      <%= @post.body %>
+    <% end %>
+  
+    <%= image_tag @post.featured_image if @post.featured_image.attached? %>
+
+<br>
+<button class="text-white btn btn-info"> <%= link_to "Back", posts_path %> </button>
+<% if authenticated? %>
+  <button class="text-white btn btn-info"> <%= link_to "Edit", edit_post_path(@post) %> </button>
+  <%= button_to "Delete", @post, method: :delete, data: { turbo_confirm: "Are you sure?" } %> 
+<% end %>
