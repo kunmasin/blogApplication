@@ -23,3 +23,6 @@ Things you may want to cover:
 
 * ...
 # blogApp
+=======
+# blogApp
+This is the repository for my Blog Application
