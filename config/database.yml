@@ -2,13 +2,6 @@
 #
 # Install the pg driver:
 #   gem install pg
-# On macOS with Homebrew:
-#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
-# On Windows:
-#   gem install pg
-#       Choose the win32 build.
-#       Install PostgreSQL and put its /bin directory on your path.
-#
 # Configure Using Gemfile
 # gem "pg"
 #
@@ -18,11 +11,15 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  usename: user
+  password: 'Kunmasin'
+  host: localhost
 
 
 development:
   <<: *default
   database: blog_application_development
+  host: localhost
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
